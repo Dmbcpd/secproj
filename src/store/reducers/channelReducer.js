@@ -1,14 +1,20 @@
 const initState = {
     channels:[
-        {id:'1', name:'Atlanta', owner:'Kyle', symkey:'sdf123'},
-        {id:'2', name:'Tokyo', owner:'Ryu', symkey:'dsaf234'},
-        {id:'3', name:'Berlin', owner:'Hans', symkey:'sdfas124'}
     ],
-    current:{id:'2', name:'Tokyo', owner:'Ryu', symkey:'dsaf234'}
+
 }
 
 const channelReducer = (state = initState, action) => {
-    return state
+    switch(action.type){
+        case 'CHANNEL_CREATED':
+            console.log('channel created', action.message);
+            return state;
+        case 'CHANNEL_CREATED_ERROR':
+            console.log('channel created error', action.err);
+            return state;
+        default:
+            return state
+    }
 }
 
 export default channelReducer

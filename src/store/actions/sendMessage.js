@@ -3,10 +3,12 @@ export const sendMessage = (message) => {
         //make async call to db
         //Here we will have our Symmetric encrypytion
         const firestore = getFirestore();
+        const profile = getState().firebase.profile;
+        const authorId = getState().firebase.auth.uid;
         firestore.collection('messages').add({
             ...message, 
-            sender:'Blanka',
-            sender_id:'1245',
+            sender: profile.nickName,
+            sender_id: authorId,
             'channel_id':'Atlanta',
             timestamp: Date.now()
         }).then(() =>{
