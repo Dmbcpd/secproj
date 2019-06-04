@@ -1,11 +1,11 @@
 import React from 'react'
 
 
-const Channel = ({profile}) => {
+const Channel = ({channel}) => {
     return (
 
         <div className='channel name'> 
-            <div>{profile.nameOfChannels[1]} my channel</div>
+            <div>{channel} my channel</div>
         </div>
     )
 }

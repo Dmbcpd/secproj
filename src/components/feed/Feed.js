@@ -13,6 +13,8 @@ class Feed extends Component {
         const { profile, messages, auth} = this.props;
 
         if (!auth.uid) return <Redirect to='/login'/>
+        const channels =  profile.nameOfChannels
+        console.log(channels)
 
         
 
@@ -25,14 +27,13 @@ class Feed extends Component {
                                 <SendMessage/>
                             </div>
                             <div className="col s12 m5 offset-m1">
-                                <ChannelList channels={profile}/>
+                                <ChannelList channels={channels}/>
                             </div>
                         </div>
                     </div>
                 )
             
-
-           
+        
         
         
     }
