@@ -9,7 +9,7 @@ export const sendMessage = (message) => {
             ...message, 
             sender: profile.nickName,
             sender_id: authorId,
-            'channel_id':'Atlanta',
+            channel_id:'Atlanta',
             timestamp: Date.now()
         }).then(() =>{
             dispatch({ type:'SEND_MESSAGE', message});

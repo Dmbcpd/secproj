@@ -2,16 +2,18 @@ import React from 'react'
 import Channel from './Channel'
 import {Link} from 'react-router-dom'
 
-const ChannelList = ({channels}) => {
+const ChannelList = ({users}) => {
+
+
     return (
         <div>
-        <span className="card-title"><b>Channels</b></span>
+        <span className="card-title"><b>My Channels</b></span>
         <div className="channel section">
-            {channels && channels.map(channel => {
+            {users && users.map(user => {
                 return(
-                    <Link to={'/channel/' + channel.id} key={channel.id}>
-                    <Channel channel={channel} />
-                    </Link>
+                    
+                    <Channel user={user} />
+                    
                 )
             })}
         </div>

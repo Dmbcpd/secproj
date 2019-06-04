@@ -6,26 +6,35 @@ import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import {Redirect} from 'react-router-dom'
+import ChannelList from './ChannelList';
 
 class Feed extends Component {
     render(){
-        const { messages, auth} = this.props;
+        const { profile, messages, auth} = this.props;
 
         if (!auth.uid) return <Redirect to='/login'/>
 
+        
+
+       
         return(
-            <div className="feed container" >
-                <div className="row">
-                    <div className="col s12 m6">
-                        <MessageList messages={messages}/>
-                        <SendMessage/>
+                    <div className="feed container" >
+                        <div className="row">
+                            <div className="col s12 m6">
+                                <MessageList messages={messages}/>
+                                <SendMessage/>
+                            </div>
+                            <div className="col s12 m5 offset-m1">
+                                <ChannelList channels={profile}/>
+                            </div>
+                        </div>
                     </div>
-                    <div className="col s12 m5 offset-m1">
-                      
-                    </div>
-                </div>
-            </div>
-        )
+                )
+            
+
+           
+        
+        
     }
 }
 
@@ -34,17 +43,20 @@ const mapStateToProps = (state) => {
     if(state.firestore.ordered.messages)
     {
         return{
-            
+
+            users: state.firestore.ordered.users,
             messages:state.firestore.ordered.messages,
-            auth:state.firebase.auth
+            auth:state.firebase.auth,
+            profile: state.firebase.profile
         }
     }
     else
     {
         return{
-            
+            users: state.firestore.ordered.users,
             messages:state.firestore.ordered.messages,
-            auth:state.firebase.auth
+            auth:state.firebase.auth,
+            profile: state.firebase.profile
         }
     }
  
@@ -54,6 +66,7 @@ export default compose(
     //Here is where we will have our symmetric decrpytion
     connect(mapStateToProps),
     firestoreConnect([
-        {collection:'messages'}
+        {collection:'messages'},
+        {collection: 'users'}
     ])
 )(Feed)

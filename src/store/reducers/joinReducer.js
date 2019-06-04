@@ -3,7 +3,7 @@ const initState = {
     ]
 }
 
-const messageReducer = (state = initState, action) => {
+const joinReducer = (state = initState, action) => {
     switch(action.type){
         case 'CHANNEL_REQUEST':
             console.log('message sent', action.message);
@@ -16,4 +16,4 @@ const messageReducer = (state = initState, action) => {
     }
 }
 
-export default messageReducer
+export default joinReducer
