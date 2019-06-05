@@ -6,7 +6,7 @@ const Message = ({message}) => {
         <div className="message section">
             <p></p>
             <div className="message">
-                <div> {message.channel_id.message} - {moment(message.timestamp).format('LLL')}  - {message.sender} :  {message.message} </div>
+                <div> {message.channel_id} - {moment(message.timestamp).format('LLL')}  - {message.sender} :  {message.message} </div>
             </div>
         </div>
     )
