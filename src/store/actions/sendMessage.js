@@ -5,11 +5,12 @@ export const sendMessage = (message) => {
         const firestore = getFirestore();
         const profile = getState().firebase.profile;
         const authorId = getState().firebase.auth.uid;
+        const currentChannel = String(getState().msgfilter.current_channel);
         firestore.collection('messages').add({
             ...message, 
             sender: profile.nickName,
             sender_id: authorId,
-            channel_id:'Atlanta',
+            channel_id:currentChannel,
             timestamp: Date.now()
         }).then(() =>{
             dispatch({ type:'SEND_MESSAGE', message});

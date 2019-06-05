@@ -7,6 +7,7 @@ import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import {Redirect} from 'react-router-dom'
 import ChannelList from './ChannelList';
+import FilterMessages from './FilterMessages';
 
 class Feed extends Component {
     render(){
@@ -27,7 +28,7 @@ class Feed extends Component {
                                 <SendMessage/>
                             </div>
                             <div className="col s12 m5 offset-m1">
-                                <ChannelList channels={channels}/>
+                            <FilterMessages channels={channels}/>
                             </div>
                         </div>
                     </div>
